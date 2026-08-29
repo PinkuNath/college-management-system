@@ -3,41 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>College Management System</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <!-- Heading Panel -->
 <h1>College Management System</h1>
 
-<!--Manage / Selection Panel-->
-<label for="manage">Manage</label>
-<select id="manage">
-    <option value="student">Student</option>
-    <option value="department">Department</option>
-    <option value="professor">Professor</option>
-    <option value="hod">HODs</option>
-</select>
+<!--Manage / Selection cum Add Panel-->
+<div class="toolbar">
+    <label for="manage">Manage</label>
+    <select id="manage">
+        <option value="student">Student</option>
+        <option value="department">Department</option>
+        <option value="professor">Professor</option>
+        <option value="hod">HODs</option>
+    </select>
+</div>
 
 <!--Student Part-->
-<table id="studentTable" class="studentTableStyle">
+<table id="studentTable">
     <thead>
     <tr>
-        <th>ID</th>
         <th>Roll no.</th>
         <th>Name</th>
         <th>Department</th>
         <th>Contact no.</th>
         <th>Email ID</th>
-        <th colspan="2">Action</th>
+        <th colspan="2">
+            <span style="padding-right: 15px">Action </span>
+            <button class="add-btn">Add New +</button>
+        </th>
     </tr>
     </thead>
     <tbody id="studentTableBody">
     <!--        Students Data and Operations will appear here-->
     </tbody>
 </table>
-<div id="studentAddButton">
-    Add new student <button>+</button>
-</div>
+
 
 <script type="module" src="./js/main.js"></script>
 </body>

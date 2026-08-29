@@ -1,0 +1,156 @@
+/* ---------- Page ---------- */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+    margin: 30px;
+    color: #333;
+}
+
+/* ---------- Heading ---------- */
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #1e3a8a;
+}
+
+/* ---------- Manage Section ---------- */
+
+label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+#manage {
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+
+/* ---------- Table ---------- */
+
+#studentTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#studentTable thead {
+    background-color: #2563eb;
+    color: white;
+}
+
+#studentTable th,
+#studentTable td {
+    border: 1px solid #d1d5db;
+    padding: 12px;
+    text-align: center;
+}
+
+#studentTable tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+#studentTable tbody tr:hover {
+    background-color: #e2e8f0;
+}
+
+/* ---------- Action Buttons ---------- */
+
+.edit-btn {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    background-color: #1d4ed8;
+}
+
+.delete-btn {
+    background-color: #dc2626;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #b91c1c;
+}
+
+/* ---------- Add Student Section ---------- */
+
+.add-btn {
+    margin-top: 8px;
+    background-color: #16a34a;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.add-btn:hover {
+    background-color: #15803d;
+}
+
+/* ---------- Empty Table Message ---------- */
+
+#studentTableBody td {
+    vertical-align: middle;
+}
+
+/* Labels */
+
+label {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #1f2937;
+}
+
+/* Select Dropdown */
+
+select {
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background-color: white;
+    font-size: 14px;
+    cursor: pointer;
+    min-width: 180px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+/* Hover */
+
+select:hover {
+    border-color: #2563eb;
+}
+
+/* Focus */
+
+select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
+}
+
+/* Options */
+
+option {
+    background-color: white;
+}
+
+.toolbar {
+    margin-bottom: 20px;
+}

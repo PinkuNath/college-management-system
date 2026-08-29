@@ -8,17 +8,17 @@ export async function loadStudents(){
         const students = await getStudents();
         students.forEach(student => {
             html += `
-            <tr>
-                <td>${student.id}<td>
-                <td>${student.rollNo}<td>
-                <td id="${student.deptId}">${student.name}<td>
-                <td>${student.contactNo}<td>
-                <td>${student.email}<td>
+            <tr id="${student.id}">
+                <td>${student.rollNo}</td>
+                <td>${student.name}</td>
+                <td  id="${student.deptId}">${student.deptName}</td>
+                <td>${student.contactNo}</td>
+                <td>${student.email}</td>
                 <td>
-                    <button>Delete</button>
+                    <button class="delete-btn">Delete</button>
                 </td>
                 <td>
-                    <button>Edit</button>
+                    <button class="edit-btn">Edit</button>
                 </td>   
             `
             studentTableBody.innerHTML = html;
