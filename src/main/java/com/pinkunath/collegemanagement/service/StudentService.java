@@ -33,7 +33,7 @@ public class StudentService {
                     studentId,
                     student.getRollNo(),
                     student.getName(),
-                    student.getDeptID(),
+                    student.getDeptId(),
                     departmentMap.get(studentId),
                     student.getContactNo(),
                     student.getEmail()

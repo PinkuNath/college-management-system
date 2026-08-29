@@ -15,11 +15,11 @@ public class Student {
 
     private int rollNo;
     private String name;
-    private int deptID;
+    private int deptId;
     private String contactNo;
     private String email;
 
-    @ManyToOne
-    @JoinColumn(name = "deptId")
-    private Department department;
+//    @ManyToOne
+//    @JoinColumn(name = "deptId")
+//    private Department department;
 }
