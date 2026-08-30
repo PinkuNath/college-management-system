@@ -1,4 +1,5 @@
 import {getStudents} from "../api/studentApi.js";
+import {getDepartments} from "../api/departmentApi.js";
 
 let studentTableBody = document.getElementById("studentTableBody");
 
@@ -27,3 +28,22 @@ export async function loadStudents(){
         studentTableBody.innerHTML = error;
     }
 }
+
+const addStudentForm = document.getElementById("addStudentForm");
+
+function showStudentFrom(){
+    addStudentForm.style.display="block";
+}
+export function hideStudentFrom(){
+    addStudentForm.style.display="none";
+}
+
+document.getElementById("showAddStudentForm").addEventListener("click", ()=>{
+    showStudentFrom();
+    console.log("showing fom")
+});
+
+addStudentForm.addEventListener("submit", (event)=>{
+    event.preventDefault();
+    //pending to include addStudent Logic
+})

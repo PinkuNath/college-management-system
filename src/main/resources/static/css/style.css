@@ -154,3 +154,83 @@ option {
 .toolbar {
     margin-bottom: 20px;
 }
+
+/* Reusable Form Card */
+
+.entity-form {
+    display: none;
+
+    width: 450px;
+    margin: 30px auto;
+    padding: 25px;
+
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* Labels */
+
+.entity-form label {
+    display: inline-block;
+    width: 120px;
+    font-weight: bold;
+}
+
+/* Inputs */
+
+.entity-form input,
+.entity-form select {
+    width: 250px;
+    padding: 8px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Focus Effect */
+
+.entity-form input:focus,
+.entity-form select:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 4px rgba(37, 99, 235, 0.3);
+}
+
+/* Button Area */
+
+.entity-form .form-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Buttons */
+
+.entity-form button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+/* Submit */
+
+.entity-form button[type="submit"] {
+    background-color: #16a34a;
+    color: white;
+}
+
+/* Reset */
+
+.entity-form button[type="reset"] {
+    background-color: #f59e0b;
+    color: white;
+}
+
+/* Cancel */
+
+.entity-form button[type="button"] {
+    background-color: #dc2626;
+    color: white;
+}

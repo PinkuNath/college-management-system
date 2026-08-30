@@ -22,6 +22,26 @@
 </div>
 
 <!--Student Part-->
+<form id="addStudentForm" class="entity-form">
+    <label for="name">Enter Name: </label>
+    <input id="name" type="text"><br><br>
+    <label for="rollNo">Roll No. </label>
+    <input id="rollNo" type="number"><br><br>
+    <div class="toolbar">
+        <label for="departmentSelectionMenu">Select Department</label>
+        <select id="departmentSelectionMenu"></select>
+    </div>
+    <label for="contactNo">Contact No. </label>
+    <input id="contactNo" type="text"><br><br>
+    <label for="email">Email Id: </label>
+    <input id="email" type="email"><br><br>
+    <div class="form-buttons">
+        <button id="cancel" type="button">Cancel</button>
+        <button type="reset">Reset</button>
+        <button type="submit">Add</button>
+    </div>
+</form>
+
 <table id="studentTable">
     <thead>
     <tr>
@@ -32,7 +52,7 @@
         <th>Email ID</th>
         <th colspan="2">
             <span style="padding-right: 15px">Action </span>
-            <button class="add-btn">Add New +</button>
+            <button type="button" id="showAddStudentForm" class="add-btn">Add New +</button>
         </th>
     </tr>
     </thead>
@@ -40,7 +60,6 @@
     <!--        Students Data and Operations will appear here-->
     </tbody>
 </table>
-
 
 <script type="module" src="./js/main.js"></script>
 </body>
