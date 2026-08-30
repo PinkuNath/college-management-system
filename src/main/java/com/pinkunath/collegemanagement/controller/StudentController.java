@@ -1,11 +1,10 @@
 package com.pinkunath.collegemanagement.controller;
 
+import com.pinkunath.collegemanagement.dto.request.StudentRequestDTO;
 import com.pinkunath.collegemanagement.dto.response.StudentResponseDTO;
 import com.pinkunath.collegemanagement.service.StudentService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +20,11 @@ public class StudentController {
     @GetMapping("/students")
     public ResponseEntity<List<StudentResponseDTO>> getStudent(){
         return ResponseEntity.ok(studentService.getStudents());
+    }
+
+    @PostMapping("/student")
+    public ResponseEntity<String> addStudent(@RequestBody StudentRequestDTO studentRequestDTO){
+        studentService.addStudents(studentRequestDTO);
+        return ResponseEntity.ok("Student added successfully");
     }
 }

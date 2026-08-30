@@ -1,5 +1,6 @@
 package com.pinkunath.collegemanagement.service;
 
+import com.pinkunath.collegemanagement.dto.request.StudentRequestDTO;
 import com.pinkunath.collegemanagement.dto.response.StudentResponseDTO;
 import com.pinkunath.collegemanagement.entity.Department;
 import com.pinkunath.collegemanagement.entity.Student;
@@ -40,5 +41,15 @@ public class StudentService {
             ));
         }
         return studentResponseDTOList;
+    }
+
+    public void addStudents(StudentRequestDTO studentRequestDTO){
+        studentRepository.save(new Student(
+                studentRequestDTO.rollNo(),
+                studentRequestDTO.name(),
+                studentRequestDTO.deptId(),
+                studentRequestDTO.contactNo(),
+                studentRequestDTO.email()
+        ));
     }
 }

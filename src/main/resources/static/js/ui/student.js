@@ -1,4 +1,4 @@
-import {getStudents} from "../api/studentApi.js";
+import {getStudents, addStudent} from "../api/studentApi.js";
 import {getDepartments} from "../api/departmentApi.js";
 
 let studentTableBody = document.getElementById("studentTableBody");
@@ -38,12 +38,52 @@ export function hideStudentFrom(){
     addStudentForm.style.display="none";
 }
 
-document.getElementById("showAddStudentForm").addEventListener("click", ()=>{
+document.getElementById("showAddStudentForm").addEventListener("click", async ()=>{
     showStudentFrom();
-    console.log("showing fom")
+    await createDepartmentSelectionMenu();
 });
 
-addStudentForm.addEventListener("submit", (event)=>{
+async function createDepartmentSelectionMenu(){
+    let departmentSelectionMenu = document.getElementById("departmentSelectionMenu");
+    try {
+        let html = "<option>Choose any one</option>";
+        const departments = await getDepartments();
+        departments.forEach((department)=>{
+            html += `
+                <option value="${department.id}">${department.name}</option>
+            `
+        });
+        departmentSelectionMenu.innerHTML = html;
+    }
+    catch (error){
+        departmentSelectionMenu.innerHTML = `
+            <option>error</option>
+        `
+    }
+    finally {
+        document.getElementById("cancel").addEventListener("click", ()=>{
+            hideStudentFrom();
+        })
+    }
+}
+
+addStudentForm.addEventListener("submit", async (event)=>{
     event.preventDefault();
-    //pending to include addStudent Logic
+    try {
+        const name = document.getElementById("name").value;
+        const rollNo = document.getElementById("rollNo").value;
+        const deptId = document.getElementById("departmentSelectionMenu").value;
+        const contactNo = document.getElementById("contactNo").value;
+        const email = document.getElementById("email").value;
+        const student = {
+            rollNo,
+            name,
+            deptId,
+            contactNo,
+            email
+        }
+        await addStudent(student);
+    }catch (error){
+        console.log(error);
+    }
 })
