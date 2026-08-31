@@ -30,12 +30,13 @@ public class StudentService {
         }
         for(Student student : students){
             int studentId = student.getId();
+            int deptId = student.getDeptId();
             studentResponseDTOList.add(new StudentResponseDTO(
                     studentId,
                     student.getRollNo(),
                     student.getName(),
                     student.getDeptId(),
-                    departmentMap.get(studentId),
+                    departmentMap.get(deptId),
                     student.getContactNo(),
                     student.getEmail()
             ));

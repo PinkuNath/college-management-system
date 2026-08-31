@@ -83,6 +83,8 @@ addStudentForm.addEventListener("submit", async (event)=>{
             email
         }
         await addStudent(student);
+        hideStudentFrom();
+        await loadStudents();
     }catch (error){
         console.log(error);
     }

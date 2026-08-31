@@ -10,7 +10,7 @@ export async function addStudent(student){
     const response = await fetch("http://localhost:8080/student",{
         method: "POST",
         headers: {
-            "Content-Type":"Application/json"
+            "Content-Type":"application/json"
         },
         body: JSON.stringify(student)
     });
