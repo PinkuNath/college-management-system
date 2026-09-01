@@ -53,4 +53,8 @@ public class StudentService {
                 studentRequestDTO.email()
         ));
     }
+
+    public void deleteStudent(int id){
+        studentRepository.deleteById(id);
+    }
 }

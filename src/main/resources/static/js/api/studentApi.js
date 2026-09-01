@@ -18,3 +18,12 @@ export async function addStudent(student){
         throw new Error("Failed to add Student");
     }
 }
+
+export async function deleteStudent(id){
+    const response = await fetch(`http://localhost:8080/student/${id}`,{
+        method: "DELETE"
+    });
+    if(!response.ok){
+        throw new Error("Delete Failed");
+    }
+}

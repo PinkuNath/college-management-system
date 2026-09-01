@@ -27,4 +27,10 @@ public class StudentController {
         studentService.addStudents(studentRequestDTO);
         return ResponseEntity.ok("Student added successfully");
     }
+
+    @DeleteMapping("/student/{id}")
+    public ResponseEntity<String> deleteStudent(@PathVariable int id){
+        studentService.deleteStudent(id);
+        return ResponseEntity.ok("Delete Successful");
+    }
 }
