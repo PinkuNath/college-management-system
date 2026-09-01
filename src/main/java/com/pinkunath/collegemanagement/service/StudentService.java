@@ -57,4 +57,14 @@ public class StudentService {
     public void deleteStudent(int id){
         studentRepository.deleteById(id);
     }
+
+    public void updateStudent(int id, StudentRequestDTO studentRequestDTO){
+        Student student = studentRepository.findById(id).orElseThrow();
+        student.setRollNo(studentRequestDTO.rollNo());
+        student.setName(studentRequestDTO.name());
+        student.setDeptId(studentRequestDTO.deptId());
+        student.setContactNo(studentRequestDTO.contactNo());
+        student.setEmail(studentRequestDTO.email());
+        studentRepository.save(student);
+    }
 }
