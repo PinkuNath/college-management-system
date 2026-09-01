@@ -1,12 +1,15 @@
 import {getStudents, addStudent, deleteStudent} from "../api/studentApi.js";
-import {createDepartmentSelectionMenu} from "../utils.js";
+import {showFrom, hideFrom, createDepartmentSelectionMenu} from "../utils.js";
+
+//Global Variables
+let students;
 
 //To load students in the Student Table
 export async function loadStudents(){
     let studentTableBody = document.getElementById("studentTableBody");
     try{
         let html = "";
-        const students = await getStudents();
+        students = await getStudents();
         students.forEach(student => {
             html += `
             <tr>
@@ -32,27 +35,22 @@ export async function loadStudents(){
 
 //To Add new Student
 document.getElementById("showAddStudentForm").addEventListener("click", async ()=>{
-    showStudentFrom();
-    await createDepartmentSelectionMenu();
-    document.getElementById("cancel").addEventListener("click", ()=>{
-        hideStudentFrom();
+    showFrom("addStudentForm");
+    await createDepartmentSelectionMenu("departmentSelectionMenuToAddDeptForStudent");
+    document.getElementById("cancelAddStudent").addEventListener("click", ()=>{
+        hideFrom("addStudentForm");
     })
 });
-const addStudentForm = document.getElementById("addStudentForm");
-export function showStudentFrom(){
-    addStudentForm.style.display="block";
-}
-export function hideStudentFrom(){
-    addStudentForm.style.display="none";
-}
-addStudentForm.addEventListener("submit", async (event)=>{
+
+document.getElementById("addStudentForm")
+    .addEventListener("submit", async (event)=>{
     event.preventDefault();
     try {
-        const name = document.getElementById("name").value;
-        const rollNo = document.getElementById("rollNo").value;
-        const deptId = document.getElementById("departmentSelectionMenu").value;
-        const contactNo = document.getElementById("contactNo").value;
-        const email = document.getElementById("email").value;
+        const name = document.getElementById("studentNameToAdd").value;
+        const rollNo = document.getElementById("studentRollNoToAdd").value;
+        const deptId = document.getElementById("departmentSelectionMenuToAddDeptForStudent").value;
+        const contactNo = document.getElementById("studentContactNoToAdd").value;
+        const email = document.getElementById("studentEmailToAdd").value;
         const student = {
             rollNo,
             name,
@@ -61,7 +59,7 @@ addStudentForm.addEventListener("submit", async (event)=>{
             email
         }
         await addStudent(student);
-        hideStudentFrom();
+        hideFrom("addStudentForm");
         await loadStudents();
     }catch (error){
         console.log(error);
@@ -84,3 +82,5 @@ function attachDeleteListeners(){
             });
         });
 }
+
+//To Edit a Student Details
