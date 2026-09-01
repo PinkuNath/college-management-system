@@ -1,5 +1,19 @@
-import {getStudents, addStudent, deleteStudent} from "../api/studentApi.js";
-import {showFrom, hideFrom, createDepartmentSelectionMenu} from "../utils.js";
+import {
+    getStudents,
+    addStudent,
+    deleteStudent,
+    updateStudent
+} from "../api/studentApi.js";
+
+import {
+    showForm,
+    hideForm,
+    cancelForm,
+    assignValue,
+    getValue,
+    createDepartmentSelectionMenu,
+    resetForm, showTable, hideTable
+} from "../utils.js";
 
 //Global Variables
 let students;
@@ -22,35 +36,37 @@ export async function loadStudents(){
                     <button value="${student.id}" class="delete-btn">Delete</button>
                 </td>
                 <td>
-                    <button class="edit-btn">Edit</button>
+                    <button value="${student.id}" class="edit-btn">Edit</button>
                 </td>   
             `
         });
         studentTableBody.innerHTML = html;
         attachDeleteListeners();
+        attachUpdateListeners();
     }catch (error){
         studentTableBody.innerHTML = error;
     }
 }
 
 //To Add new Student
-document.getElementById("showAddStudentForm").addEventListener("click", async ()=>{
-    showFrom("addStudentForm");
-    await createDepartmentSelectionMenu("departmentSelectionMenuToAddDeptForStudent");
-    document.getElementById("cancelAddStudent").addEventListener("click", ()=>{
-        hideFrom("addStudentForm");
-    })
+document.getElementById("showAddStudentForm")
+    .addEventListener("click", async ()=>{
+        hideTable("studentTable");
+        showForm("addStudentForm");
+        await createDepartmentSelectionMenu("departmentSelectionMenuToAddDeptForStudent");
+        cancelForm("addStudentForm","cancelAddStudentBtn", "studentTable");
+        resetForm("addStudentForm");
 });
 
 document.getElementById("addStudentForm")
     .addEventListener("submit", async (event)=>{
     event.preventDefault();
     try {
-        const name = document.getElementById("studentNameToAdd").value;
-        const rollNo = document.getElementById("studentRollNoToAdd").value;
-        const deptId = document.getElementById("departmentSelectionMenuToAddDeptForStudent").value;
-        const contactNo = document.getElementById("studentContactNoToAdd").value;
-        const email = document.getElementById("studentEmailToAdd").value;
+        const name = getValue("studentNameToAdd")
+        const rollNo = getValue("studentRollNoToAdd")
+        const deptId = getValue("departmentSelectionMenuToAddDeptForStudent")
+        const contactNo = getValue("studentContactNoToAdd")
+        const email = getValue("studentEmailToAdd")
         const student = {
             rollNo,
             name,
@@ -59,7 +75,9 @@ document.getElementById("addStudentForm")
             email
         }
         await addStudent(student);
-        hideFrom("addStudentForm");
+        hideForm("addStudentForm");
+        showTable("studentTable");
+        resetForm("addStudentForm");
         await loadStudents();
     }catch (error){
         console.log(error);
@@ -83,4 +101,51 @@ function attachDeleteListeners(){
         });
 }
 
-//To Edit a Student Details
+//To Update Student Details
+function attachUpdateListeners(){
+    document.querySelectorAll(".edit-btn")
+        .forEach(button=>{
+            button.addEventListener("click", async ()=>{
+                hideTable("studentTable");
+                cancelForm("updateStudentForm", "cancelUpdateStudentBtn", "studentTable");
+                const id = Number(button.value);
+                const student = students.find(student => student.id === id);
+                showForm("updateStudentForm");
+                await createDepartmentSelectionMenu("departmentSelectionMenuToUpdateDeptForStudent");
+                assignValue("studentNameToUpdate", student.name);
+                assignValue("studentRollNoToUpdate", student.rollNo);
+                assignValue("departmentSelectionMenuToUpdateDeptForStudent", student.deptId);
+                assignValue("studentContactNoToUpdate", student.contactNo);
+                assignValue("studentEmailToUpdate", student.email);
+                assignValue("UpdateStudentBtn",id);
+            });
+        });
+}
+
+document.getElementById("updateStudentForm")
+    .addEventListener("submit", async (event)=>{
+        event.preventDefault()
+        const id = getValue("UpdateStudentBtn");
+        const name = getValue("studentNameToUpdate");
+        const rollNo = getValue("studentRollNoToUpdate");
+        const deptId = getValue("departmentSelectionMenuToUpdateDeptForStudent");
+        const contactNo = getValue("studentContactNoToUpdate");
+        const email = getValue("studentEmailToUpdate");
+        const updatedStudent = {
+            rollNo,
+            name,
+            deptId,
+            contactNo,
+            email
+        }
+        try {
+            await updateStudent(id,updatedStudent);
+            showTable("studentTable");
+            await loadStudents();
+            hideForm("updateStudentForm");
+            resetForm("updateStudentForm");
+        }
+        catch (error){
+            console.log(error);
+        }
+    })

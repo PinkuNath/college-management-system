@@ -27,3 +27,16 @@ export async function deleteStudent(id){
         throw new Error("Delete Failed");
     }
 }
+
+export async function updateStudent(id, updatedStudent){
+    const response = await fetch(`http://localhost:8080/student/${id}`,{
+        method: "PUT",
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify(updatedStudent)
+    });
+    if(!response.ok){
+        throw new Error("Update Failed");
+    }
+}

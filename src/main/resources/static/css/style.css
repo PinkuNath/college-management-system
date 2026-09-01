@@ -32,30 +32,30 @@ label {
 
 /* ---------- Table ---------- */
 
-#studentTable {
+.student-table {
     width: 100%;
     border-collapse: collapse;
     background-color: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-#studentTable thead {
+.student-table thead {
     background-color: #2563eb;
     color: white;
 }
 
-#studentTable th,
-#studentTable td {
+.student-table th,
+.student-table td {
     border: 1px solid #d1d5db;
     padding: 12px;
     text-align: center;
 }
 
-#studentTable tbody tr:nth-child(even) {
+.student-table tbody tr:nth-child(even) {
     background-color: #f8fafc;
 }
 
-#studentTable tbody tr:hover {
+.student-table tbody tr:hover {
     background-color: #e2e8f0;
 }
 
