@@ -75,4 +75,4 @@ document.getElementById("hodManagement")
         hideElement("addStudentForm");
         hideElement("updateStudentForm");
         manage.value="hod";
-    })
+    });
