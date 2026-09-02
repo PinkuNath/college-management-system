@@ -33,6 +33,7 @@ label {
 /* ---------- Table ---------- */
 
 .student-table {
+    display: none;
     width: 100%;
     border-collapse: collapse;
     background-color: white;
@@ -233,4 +234,59 @@ option {
 .entity-form button[type="button"] {
     background-color: #dc2626;
     color: white;
+}
+
+/* Home Section */
+
+.home-section {
+    text-align: center;
+    padding: 30px;
+}
+
+.home-title {
+    color: #1e3a8a;
+    margin-bottom: 10px;
+}
+
+.home-description {
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Cards Container */
+
+.home-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Individual Card */
+
+.home-card {
+    width: 220px;
+    padding: 20px;
+
+    background-color: white;
+
+    border-radius: 8px;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+    transition: transform 0.2s;
+}
+
+.home-card:hover {
+    transform: translateY(-5px);
+}
+
+.home-card h3 {
+    color: #2563eb;
+    margin-bottom: 10px;
+}
+
+.home-card p {
+    color: #666;
+    font-size: 14px;
 }

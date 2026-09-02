@@ -1,17 +1,25 @@
 import {getDepartments} from "./api/departmentApi.js";
 
-export function showForm(formId){
-    document.getElementById(formId).style.display="block";
+export function showElement(elementId){
+    document.getElementById(elementId).style.display="block";
 }
 
-export function hideForm(formId){
-    document.getElementById(formId).style.display="none";
+export function hideElement(elementId){
+    document.getElementById(elementId).style.display="none";
+}
+
+export function showTable(tableId){
+    document.getElementById(tableId).style.display="table";
+}
+
+export function hideTable(tableId){
+    document.getElementById(tableId).style.display="none";
 }
 
 export function cancelForm(formId,cancelButtonId,resultTableIdToShow){
     document.getElementById(cancelButtonId)
         .addEventListener("click", ()=>{
-            hideForm(formId);
+            hideElement(formId);
             showTable(resultTableIdToShow);
         });
 }
@@ -22,15 +30,6 @@ export function resetForm(formId){
 
 export function assignValue(id,value){
     document.getElementById(id).value = value;
-}
-
-export function showTable(tableId){
-    document.getElementById(tableId).style.display="";
-}
-
-
-export function hideTable(tableId){
-    document.getElementById(tableId).style.display="none";
 }
 
 export function getValue(id){

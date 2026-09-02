@@ -6,13 +6,15 @@ import {
 } from "../api/studentApi.js";
 
 import {
-    showForm,
-    hideForm,
     cancelForm,
     assignValue,
     getValue,
     createDepartmentSelectionMenu,
-    resetForm, showTable, hideTable
+    resetForm,
+    showTable,
+    hideTable,
+    showElement,
+    hideElement
 } from "../utils.js";
 
 //Global Variables
@@ -52,7 +54,7 @@ export async function loadStudents(){
 document.getElementById("showAddStudentForm")
     .addEventListener("click", async ()=>{
         hideTable("studentTable");
-        showForm("addStudentForm");
+        showElement("addStudentForm");
         await createDepartmentSelectionMenu("departmentSelectionMenuToAddDeptForStudent");
         cancelForm("addStudentForm","cancelAddStudentBtn", "studentTable");
         resetForm("addStudentForm");
@@ -75,7 +77,7 @@ document.getElementById("addStudentForm")
             email
         }
         await addStudent(student);
-        hideForm("addStudentForm");
+        hideElement("addStudentForm");
         showTable("studentTable");
         resetForm("addStudentForm");
         await loadStudents();
@@ -110,7 +112,7 @@ function attachUpdateListeners(){
                 cancelForm("updateStudentForm", "cancelUpdateStudentBtn", "studentTable");
                 const id = Number(button.value);
                 const student = students.find(student => student.id === id);
-                showForm("updateStudentForm");
+                showElement("updateStudentForm");
                 await createDepartmentSelectionMenu("departmentSelectionMenuToUpdateDeptForStudent");
                 assignValue("studentNameToUpdate", student.name);
                 assignValue("studentRollNoToUpdate", student.rollNo);
@@ -142,7 +144,7 @@ document.getElementById("updateStudentForm")
             await updateStudent(id,updatedStudent);
             showTable("studentTable");
             await loadStudents();
-            hideForm("updateStudentForm");
+            hideElement("updateStudentForm");
             resetForm("updateStudentForm");
         }
         catch (error){
