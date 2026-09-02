@@ -41,3 +41,38 @@ manage.addEventListener("change", async () => {
            break;
    }
 });
+
+document.getElementById("studentManagement")
+    .addEventListener("click", async ()=>{
+        hideElement("homeSection");
+        showTable("studentTable");
+        manage.value="student";
+        await loadStudents();
+    });
+
+document.getElementById("departmentManagement")
+    .addEventListener("click",()=>{
+        hideElement("homeSection");
+        hideTable("studentTable");
+        hideElement("addStudentForm");
+        hideElement("updateStudentForm");
+        manage.value="department";
+    });
+
+document.getElementById("professorManagement")
+    .addEventListener("click", ()=>{
+        hideElement("homeSection");
+        hideTable("studentTable");
+        hideElement("addStudentForm");
+        hideElement("updateStudentForm");
+        manage.value="professor";
+    });
+
+document.getElementById("hodManagement")
+    .addEventListener("click", ()=>{
+        hideElement("homeSection");
+        hideTable("studentTable");
+        hideElement("addStudentForm");
+        hideElement("updateStudentForm");
+        manage.value="hod";
+    })
