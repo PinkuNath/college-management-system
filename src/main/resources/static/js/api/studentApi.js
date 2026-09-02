@@ -1,5 +1,5 @@
 export async function getStudents() {
-    const response = await fetch("http://localhost:8080/students");
+    const response = await fetch("/students");
     if (!response.ok) {
         throw new Error("Failed to load students.");
     }
@@ -7,7 +7,7 @@ export async function getStudents() {
 }
 
 export async function addStudent(student){
-    const response = await fetch("http://localhost:8080/student",{
+    const response = await fetch("/student",{
         method: "POST",
         headers: {
             "Content-Type":"application/json"
@@ -20,7 +20,7 @@ export async function addStudent(student){
 }
 
 export async function deleteStudent(id){
-    const response = await fetch(`http://localhost:8080/student/${id}`,{
+    const response = await fetch(`/student/${id}`,{
         method: "DELETE"
     });
     if(!response.ok){
@@ -29,7 +29,7 @@ export async function deleteStudent(id){
 }
 
 export async function updateStudent(id, updatedStudent){
-    const response = await fetch(`http://localhost:8080/student/${id}`,{
+    const response = await fetch(`/student/${id}`,{
         method: "PUT",
         headers: {
             "Content-Type" : "application/json"
