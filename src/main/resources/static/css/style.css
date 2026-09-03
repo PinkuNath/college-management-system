@@ -1,3 +1,12 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
 /* ---------- Page ---------- */
 
 body {
@@ -348,8 +357,8 @@ button {
     }
 
     .entity-form {
-        width: 100%;
-        max-width: 450px;
+        width: calc(100% - 20px);
+        max-width: 100%;
     }
 
     .entity-form input,
