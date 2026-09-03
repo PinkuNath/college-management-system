@@ -174,7 +174,8 @@ option {
 
 .entity-form label {
     display: inline-block;
-    width: 120px;
+    width: 160px;
+    white-space: nowrap;
     font-weight: bold;
 }
 
@@ -327,4 +328,47 @@ option {
     margin: 8px 0 0;
     font-size: 12px;
     color: #888;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+input,
+select,
+button {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+
+    body {
+        margin: 15px;
+    }
+
+    .entity-form {
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .entity-form input,
+    .entity-form select {
+        width: 100%;
+    }
+
+    .student-table {
+        font-size: 14px;
+    }
+
+    .form-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .form-buttons button {
+        width: 100%;
+        margin: 0;
+    }
 }

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>College Management System</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -91,24 +92,26 @@
     </div>
 </form>
 
-<table id="studentTable" class="student-table">
-    <thead>
-    <tr>
-        <th>Roll no.</th>
-        <th>Name</th>
-        <th>Department</th>
-        <th>Contact no.</th>
-        <th>Email ID</th>
-        <th colspan="2">
-            <span style="padding-right: 15px">Action </span>
-            <button type="button" id="showAddStudentForm" class="add-btn">Add New +</button>
-        </th>
-    </tr>
-    </thead>
-    <tbody id="studentTableBody">
-    <!--        Students Data and Operations will appear here-->
-    </tbody>
-</table>
+<div class="table-container">
+    <table id="studentTable" class="student-table">
+        <thead>
+        <tr>
+            <th>Roll no.</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Contact no.</th>
+            <th>Email ID</th>
+            <th colspan="2">
+                <span style="padding-right: 15px">Action </span>
+                <button type="button" id="showAddStudentForm" class="add-btn">Add New +</button>
+            </th>
+        </tr>
+        </thead>
+        <tbody id="studentTableBody">
+        <!--        Students Data and Operations will appear here-->
+        </tbody>
+    </table>
+</div>
 
 <!-- Website version information -->
 <footer class="app-footer">
