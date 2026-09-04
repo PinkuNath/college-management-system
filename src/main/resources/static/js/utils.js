@@ -26,10 +26,6 @@ export function cancelForm(formId,cancelButtonId,resultTableIdToShow){
 
 export function resetForm(formId){
     document.getElementById(formId).reset();
-    document.querySelectorAll(".error-message")
-        .forEach(errorMessage=>
-            errorMessage.textContent = ""
-        );
 }
 
 export function setValue(id,value){
@@ -38,6 +34,12 @@ export function setValue(id,value){
 
 export function getValue(id){
     return document.getElementById(id).value;
+}
+
+export function clearErrors(...elements){
+    elements.forEach(element =>
+        element.textContent=""
+    )
 }
 
 export async function createDepartmentSelectionMenu(id){

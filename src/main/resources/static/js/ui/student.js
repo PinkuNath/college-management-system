@@ -14,7 +14,7 @@ import {
     showTable,
     hideTable,
     showElement,
-    hideElement
+    hideElement, clearErrors
 } from "../utils.js";
 
 //Global Variables
@@ -53,12 +53,28 @@ export async function loadStudents(){
 //To Add new Student
 document.getElementById("showAddStudentForm")
     .addEventListener("click", async ()=>{
+        resetForm("addStudentForm");
         hideTable("studentTable");
         showElement("addStudentForm");
         await createDepartmentSelectionMenu("departmentSelectionMenuToAddDeptForStudent");
-        cancelForm("addStudentForm","cancelAddStudentBtn", "studentTable");
-        resetForm("addStudentForm");
 });
+
+cancelForm(
+    "addStudentForm",
+    "cancelAddStudentBtn",
+    "studentTable"
+);
+
+document.getElementById("addStudentForm")
+    .addEventListener("reset", () => {
+        clearErrors(
+            document.getElementById("studentNameToAddError"),
+            document.getElementById("studentRollNoToAddError"),
+            document.getElementById("studentDepartmentToAddError"),
+            document.getElementById("studentContactNoToAddError"),
+            document.getElementById("studentEmailToAddError")
+        );
+    });
 
 document.getElementById("addStudentForm")
     .addEventListener("submit", async (event)=>{
@@ -69,11 +85,13 @@ document.getElementById("addStudentForm")
     let contactNoError = document.getElementById("studentContactNoToAddError");
     let emailError = document.getElementById("studentEmailToAddError");
     try {
-        nameError.textContent = "";
-        rollNoError.textContent = "";
-        deptError.textContent = "";
-        contactNoError.textContent = "";
-        emailError.textContent = "";
+        clearErrors(
+            nameError,
+            rollNoError,
+            deptError,
+            contactNoError,
+            emailError
+        );
         const name = getValue("studentNameToAdd")
         const rollNo = getValue("studentRollNoToAdd")
         const deptId = getValue("departmentSelectionMenuToAddDeptForStudent")
@@ -89,8 +107,8 @@ document.getElementById("addStudentForm")
         await addStudent(student);
         hideElement("addStudentForm");
         showTable("studentTable");
-        resetForm("addStudentForm");
         await loadStudents();
+        resetForm("addStudentForm");
     }catch (errors){
         nameError.textContent = errors.name || "";
         rollNoError.textContent = errors.rollNo || "";
@@ -98,7 +116,7 @@ document.getElementById("addStudentForm")
         contactNoError.textContent = errors.contactNo || "";
         emailError.textContent = errors.email || "";
     }
-})
+});
 
 //To Delete a student
 function attachDeleteListeners(){
@@ -123,7 +141,6 @@ function attachUpdateListeners(){
         .forEach(button=>{
             button.addEventListener("click", async ()=>{
                 hideTable("studentTable");
-                cancelForm("updateStudentForm", "cancelUpdateStudentBtn", "studentTable");
                 const id = Number(button.value);
                 const student = students.find(student => student.id === id);
                 showElement("updateStudentForm");
@@ -137,6 +154,12 @@ function attachUpdateListeners(){
             });
         });
 }
+
+cancelForm(
+    "updateStudentForm",
+    "cancelUpdateStudentBtn",
+    "studentTable"
+);
 
 document.getElementById("updateStudentForm")
     .addEventListener("submit", async (event)=>{
@@ -164,4 +187,4 @@ document.getElementById("updateStudentForm")
         catch (error){
             console.log(error);
         }
-    })
+    });
