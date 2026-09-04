@@ -26,6 +26,10 @@ export function cancelForm(formId,cancelButtonId,resultTableIdToShow){
 
 export function resetForm(formId){
     document.getElementById(formId).reset();
+    document.querySelectorAll(".error-message")
+        .forEach(errorMessage=>
+            errorMessage.textContent = ""
+        );
 }
 
 export function setValue(id,value){
