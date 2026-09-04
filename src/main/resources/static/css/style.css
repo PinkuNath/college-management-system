@@ -170,7 +170,8 @@ option {
 .entity-form {
     display: none;
 
-    width: 450px;
+    width: 100%;
+    max-width: 500px;
     margin: 30px auto;
     padding: 25px;
 
@@ -182,9 +183,9 @@ option {
 /* Labels */
 
 .entity-form label {
-    display: inline-block;
-    width: 160px;
-    white-space: nowrap;
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
     font-weight: bold;
 }
 
@@ -192,11 +193,12 @@ option {
 
 .entity-form input,
 .entity-form select {
-    width: 250px;
+    width: 100%;
     padding: 8px;
     border: 1px solid #cbd5e1;
     border-radius: 5px;
     font-size: 14px;
+    margin-bottom: 15px;
 }
 
 /* Focus Effect */
@@ -380,4 +382,17 @@ button {
         width: 100%;
         margin: 0;
     }
+}
+
+.error-message {
+    display: block;
+    color: #dc2626;
+    font-size: 13px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+
+.required {
+    color: #dc2626;
+    font-weight: bold;
 }

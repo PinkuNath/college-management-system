@@ -54,18 +54,22 @@
 
 <!--Student Part-->
 <form id="addStudentForm" class="entity-form">
-    <label for="studentNameToAdd">Enter Name: </label>
-    <input id="studentNameToAdd" type="text"><br><br>
+    <label for="studentNameToAdd">
+        Enter Name: <span class="required">*</span>
+    </label>
+    <input id="studentNameToAdd" type="text">
+    <span id="studentNameError" class="error-message"></span>
+
     <label for="studentRollNoToAdd">Roll No. </label>
-    <input id="studentRollNoToAdd" type="number"><br><br>
+    <input id="studentRollNoToAdd" type="number">
     <div class="toolbar">
         <label for="departmentSelectionMenuToAddDeptForStudent">Select Department</label>
         <select id="departmentSelectionMenuToAddDeptForStudent"></select>
     </div>
     <label for="studentContactNoToAdd">Contact No. </label>
-    <input id="studentContactNoToAdd" type="text"><br><br>
-    <label for="studentEmailToAdd">Email Id: </label>
-    <input id="studentEmailToAdd" type="email"><br><br>
+    <input id="studentContactNoToAdd" type="text">
+    <label for="studentEmailToAdd">Email ID: </label>
+    <input id="studentEmailToAdd" type="email">
     <div class="form-buttons">
         <button id="cancelAddStudentBtn" type="button">Cancel</button>
         <button type="reset">Reset</button>
@@ -75,17 +79,17 @@
 
 <form id="updateStudentForm" class="entity-form">
     <label for="studentNameToUpdate">Enter Name: </label>
-    <input id="studentNameToUpdate" type="text"><br><br>
+    <input id="studentNameToUpdate" type="text">
     <label for="studentRollNoToUpdate">Roll No. </label>
-    <input id="studentRollNoToUpdate" type="number"><br><br>
+    <input id="studentRollNoToUpdate" type="number">
     <div class="toolbar">
         <label for="departmentSelectionMenuToUpdateDeptForStudent">Select Department</label>
         <select id="departmentSelectionMenuToUpdateDeptForStudent"></select>
     </div>
     <label for="studentContactNoToUpdate">Contact No. </label>
-    <input id="studentContactNoToUpdate" type="text"><br><br>
-    <label for="studentEmailToUpdate">Email Id: </label>
-    <input id="studentEmailToUpdate" type="email"><br><br>
+    <input id="studentContactNoToUpdate" type="text">
+    <label for="studentEmailToUpdate">Email ID: </label>
+    <input id="studentEmailToUpdate" type="email">
     <div class="form-buttons">
         <button id="cancelUpdateStudentBtn" type="button">Cancel</button>
         <button id="UpdateStudentBtn" type="submit">Update</button>
