@@ -15,7 +15,7 @@ export async function addStudent(student){
         body: JSON.stringify(student)
     });
     if(!response.ok){
-        throw new Error("Failed to add Student");
+        throw await response.json();
     }
 }
 

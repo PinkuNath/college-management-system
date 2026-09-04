@@ -7,7 +7,7 @@ import {
 
 import {
     cancelForm,
-    assignValue,
+    setValue,
     getValue,
     createDepartmentSelectionMenu,
     resetForm,
@@ -63,7 +63,17 @@ document.getElementById("showAddStudentForm")
 document.getElementById("addStudentForm")
     .addEventListener("submit", async (event)=>{
     event.preventDefault();
+    let nameError = document.getElementById("studentNameToAddError");
+    let rollNoError = document.getElementById("studentRollNoToAddError");
+    let deptError = document.getElementById("studentDepartmentToAddError");
+    let contactNoError = document.getElementById("studentContactNoToAddError");
+    let emailError = document.getElementById("studentEmailToAddError");
     try {
+        nameError.textContent = "";
+        rollNoError.textContent = "";
+        deptError.textContent = "";
+        contactNoError.textContent = "";
+        emailError.textContent = "";
         const name = getValue("studentNameToAdd")
         const rollNo = getValue("studentRollNoToAdd")
         const deptId = getValue("departmentSelectionMenuToAddDeptForStudent")
@@ -81,8 +91,12 @@ document.getElementById("addStudentForm")
         showTable("studentTable");
         resetForm("addStudentForm");
         await loadStudents();
-    }catch (error){
-        console.log(error);
+    }catch (errors){
+        nameError.textContent = errors.name || "";
+        rollNoError.textContent = errors.rollNo || "";
+        deptError.textContent = errors.deptId || "";
+        contactNoError.textContent = errors.contactNo || "";
+        emailError.textContent = errors.email || "";
     }
 })
 
@@ -114,12 +128,12 @@ function attachUpdateListeners(){
                 const student = students.find(student => student.id === id);
                 showElement("updateStudentForm");
                 await createDepartmentSelectionMenu("departmentSelectionMenuToUpdateDeptForStudent");
-                assignValue("studentNameToUpdate", student.name);
-                assignValue("studentRollNoToUpdate", student.rollNo);
-                assignValue("departmentSelectionMenuToUpdateDeptForStudent", student.deptId);
-                assignValue("studentContactNoToUpdate", student.contactNo);
-                assignValue("studentEmailToUpdate", student.email);
-                assignValue("UpdateStudentBtn",id);
+                setValue("studentNameToUpdate", student.name);
+                setValue("studentRollNoToUpdate", student.rollNo);
+                setValue("departmentSelectionMenuToUpdateDeptForStudent", student.deptId);
+                setValue("studentContactNoToUpdate", student.contactNo);
+                setValue("studentEmailToUpdate", student.email);
+                setValue("UpdateStudentBtn",id);
             });
         });
 }

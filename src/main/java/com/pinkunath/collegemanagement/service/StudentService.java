@@ -24,13 +24,13 @@ public class StudentService {
         List<Student> students = studentRepository.findAll();
         List<StudentResponseDTO> studentResponseDTOList = new ArrayList<>();
         List<Department> departments = departmentRepository.findAll();
-        Map<Integer, String> departmentMap = new HashMap<>();
+        Map<Long, String> departmentMap = new HashMap<>();
         for (Department department : departments){
             departmentMap.put(department.getId(),department.getName());
         }
         for(Student student : students){
-            int studentId = student.getId();
-            int deptId = student.getDeptId();
+            Long studentId = student.getId();
+            Long deptId = student.getDeptId();
             studentResponseDTOList.add(new StudentResponseDTO(
                     studentId,
                     student.getRollNo(),
@@ -54,11 +54,11 @@ public class StudentService {
         ));
     }
 
-    public void deleteStudent(int id){
+    public void deleteStudent(Long id){
         studentRepository.deleteById(id);
     }
 
-    public void updateStudent(int id, StudentRequestDTO studentRequestDTO){
+    public void updateStudent(Long id, StudentRequestDTO studentRequestDTO){
         Student student = studentRepository.findById(id).orElseThrow();
         student.setRollNo(studentRequestDTO.rollNo());
         student.setName(studentRequestDTO.name());

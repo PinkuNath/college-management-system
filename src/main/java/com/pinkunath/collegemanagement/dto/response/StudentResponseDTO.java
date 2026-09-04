@@ -1,10 +1,10 @@
 package com.pinkunath.collegemanagement.dto.response;
 
 public record StudentResponseDTO(
-        int id,
-        int rollNo,
+        Long id,
+        Long rollNo,
         String name,
-        int deptId,
+        Long deptId,
         String deptName,
         String contactNo,
         String email

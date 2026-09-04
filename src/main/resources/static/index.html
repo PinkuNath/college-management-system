@@ -53,23 +53,35 @@
 </div>
 
 <!--Student Part-->
-<form id="addStudentForm" class="entity-form">
+<form id="addStudentForm" class="entity-form" novalidate>
     <label for="studentNameToAdd">
         Enter Name: <span class="required">*</span>
     </label>
+    <span id="studentNameToAddError" class="error-message"></span>
     <input id="studentNameToAdd" type="text">
-    <span id="studentNameError" class="error-message"></span>
 
-    <label for="studentRollNoToAdd">Roll No. </label>
+    <label for="studentRollNoToAdd">
+        Roll No. <span class="required">*</span>
+    </label>
+    <span id="studentRollNoToAddError" class="error-message"></span>
     <input id="studentRollNoToAdd" type="number">
+
     <div class="toolbar">
-        <label for="departmentSelectionMenuToAddDeptForStudent">Select Department</label>
+        <label for="departmentSelectionMenuToAddDeptForStudent">
+            Select Department <span class="required">*</span>
+        </label>
+        <span id="studentDepartmentToAddError" class="error-message"></span>
         <select id="departmentSelectionMenuToAddDeptForStudent"></select>
     </div>
+
     <label for="studentContactNoToAdd">Contact No. </label>
+    <span id="studentContactNoToAddError" class="error-message"></span>
     <input id="studentContactNoToAdd" type="text">
+
     <label for="studentEmailToAdd">Email ID: </label>
+    <span id="studentEmailToAddError" class="error-message"></span>
     <input id="studentEmailToAdd" type="email">
+
     <div class="form-buttons">
         <button id="cancelAddStudentBtn" type="button">Cancel</button>
         <button type="reset">Reset</button>

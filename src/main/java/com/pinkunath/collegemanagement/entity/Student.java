@@ -13,15 +13,15 @@ import lombok.Setter;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
-    private int rollNo;
+    private Long rollNo;
     private String name;
-    private int deptId;
+    private Long deptId;
     private String contactNo;
     private String email;
 
-    public Student(int rollNo, String name, int deptId, String contactNo, String email){
+    public Student(Long rollNo, String name, Long deptId, String contactNo, String email){
         this.rollNo = rollNo;
         this.name = name;
         this.deptId = deptId;

@@ -3,6 +3,7 @@ package com.pinkunath.collegemanagement.controller;
 import com.pinkunath.collegemanagement.dto.request.StudentRequestDTO;
 import com.pinkunath.collegemanagement.dto.response.StudentResponseDTO;
 import com.pinkunath.collegemanagement.service.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,21 +24,31 @@ public class StudentController {
     }
 
     @PostMapping("/student")
-    public ResponseEntity<String> addStudent(@RequestBody StudentRequestDTO studentRequestDTO){
+    public ResponseEntity<String> addStudent(
+            @Valid
+            @RequestBody
+            StudentRequestDTO studentRequestDTO
+    ){
         studentService.addStudents(studentRequestDTO);
         return ResponseEntity.ok("Student added successfully");
     }
 
     @DeleteMapping("/student/{id}")
-    public ResponseEntity<String> deleteStudent(@PathVariable int id){
+    public ResponseEntity<String> deleteStudent(
+            @PathVariable
+            Long id
+    ){
         studentService.deleteStudent(id);
         return ResponseEntity.ok("Delete Successful");
     }
 
     @PutMapping("/student/{id}")
     public ResponseEntity<String> updateStudent(
-            @PathVariable int id,
-            @RequestBody StudentRequestDTO studentRequestDTO
+            @PathVariable
+            Long id,
+
+            @RequestBody
+            StudentRequestDTO studentRequestDTO
     ){
         studentService.updateStudent(id, studentRequestDTO);
         return ResponseEntity.ok("Update Successful");

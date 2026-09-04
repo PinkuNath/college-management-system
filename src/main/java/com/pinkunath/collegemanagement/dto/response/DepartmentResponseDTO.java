@@ -1,7 +1,7 @@
 package com.pinkunath.collegemanagement.dto.response;
 
 public record DepartmentResponseDTO(
-        int id,
+        Long id,
         String name
 ) {
 }

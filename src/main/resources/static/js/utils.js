@@ -28,7 +28,7 @@ export function resetForm(formId){
     document.getElementById(formId).reset();
 }
 
-export function assignValue(id,value){
+export function setValue(id,value){
     document.getElementById(id).value = value;
 }
 
@@ -39,7 +39,8 @@ export function getValue(id){
 export async function createDepartmentSelectionMenu(id){
     let departmentSelectionMenu = document.getElementById(id);
     try {
-        let html = "<option>Choose any one</option>";
+        let html = `<option value="">Choose any one</option>`;
+        console.log(html);
         const departments = await getDepartments();
         departments.forEach((department)=>{
             html += `
